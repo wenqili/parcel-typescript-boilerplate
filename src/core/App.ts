@@ -1,9 +1,16 @@
 import utility from '../utils/utility';
 import Resize from '../component/Resize';
+const jsonPath = require('../config.json');
 
-const App = () => {
-  utility.log('index');
+
+// To preload JSON, set App as async
+const App = async () => {
+  const config = await utility.JSONLoader(jsonPath);
+  console.log(config);
+  
+  utility.log('index');  
   Resize.init();
+
   const update = () => {
     run();
   };
